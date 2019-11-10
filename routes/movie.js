@@ -17,6 +17,7 @@ router.get("/", (req, res, next) => {
       $unwind: "$director"
     }
   ]);
+
   promise
     .then(data => {
       res.json(data);
