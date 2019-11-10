@@ -5,13 +5,19 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 
+// db connection
 const db = require("./helper/db.js")();
+
+// config
+const config = require("./config");
 
 const indexRouter = require("./routes/index");
 const movie = require("./routes/movie");
 const director = require("./routes/director");
 
 const app = express();
+
+app.set('api_secret_key',config.api_secret_key);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
