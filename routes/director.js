@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
@@ -43,17 +43,17 @@ router.get("/", (req, res) => {
           surname: "$surname",
           bio: "$bioe"
         },
-        movies:{
-          $push: '$movies'
+        movies: {
+          $push: "$movies"
         }
       }
     },
     {
-      $project:{
-        _id: '$_id._id',
-        name: '$_id.name',
-        surname: '$_id.surname',
-        movies:'$movies'
+      $project: {
+        _id: "$_id._id",
+        name: "$_id.name",
+        surname: "$_id.surname",
+        movies: "$movies"
       }
     }
   ]);
@@ -70,8 +70,8 @@ router.get("/", (req, res) => {
 router.get("/:director_id", (req, res) => {
   const promise = Director.aggregate([
     {
-      $match:{
-        '_id': mongoose.Types.ObjectId(req.params.director_id)
+      $match: {
+        _id: mongoose.Types.ObjectId(req.params.director_id)
       }
     },
     {
@@ -96,17 +96,17 @@ router.get("/:director_id", (req, res) => {
           surname: "$surname",
           bio: "$bioe"
         },
-        movies:{
-          $push: '$movies'
+        movies: {
+          $push: "$movies"
         }
       }
     },
     {
-      $project:{
-        _id: '$_id._id',
-        name: '$_id.name',
-        surname: '$_id.surname',
-        movies:'$movies'
+      $project: {
+        _id: "$_id._id",
+        name: "$_id.name",
+        surname: "$_id.surname",
+        movies: "$movies"
       }
     }
   ]);
@@ -114,6 +114,38 @@ router.get("/:director_id", (req, res) => {
   promise
     .then(data => {
       res.json(data);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.put("/:director_id", (req, res, next) => {
+  const promise = Director.findByIdAndUpdate(req.params.director_id, req.body, {
+    new: true
+  });
+
+  promise
+    .then(director => {
+      if (!director) {
+        next({ message: "The director was not found", code: 99 });
+      }
+      res.json(director);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.delete("/:director_id", (req, res, next) => {
+  const promise = Director.findByIdAndRemove(req.params.director_id);
+
+  promise
+    .then(director => {
+      if (!director) {
+        next({ message: "The director was not found", code: 99 });
+      }
+      res.json({ status: 1 });
     })
     .catch(err => {
       res.json(err);
