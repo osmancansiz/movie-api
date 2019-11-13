@@ -7,7 +7,6 @@ const logger = require("morgan");
 
 // db connection
 const db = require("./helper/db.js")();
-
 // config
 const config = require("./config");
 
