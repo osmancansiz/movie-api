@@ -66,7 +66,7 @@ describe("/api/movies tests", () => {
     });
   });
 
-  describe("/GET/:director_id Movies", () => {
+  describe("/GET/:movie_id Movies", () => {
     it("it should GET a movie by the given id ", done => {
       chai.request(server)
         .get("/api/movies/"+movieId)
@@ -86,7 +86,7 @@ describe("/api/movies tests", () => {
     });
   });
 
-  describe("/PUT:director_id Movies", () => {
+  describe("/PUT:movie_id Movies", () => {
     it("it should UPDATE a movie given by id", done => {
       const movie = {
         title: "Falancı",
@@ -116,7 +116,7 @@ describe("/api/movies tests", () => {
     });
   });
 
-  describe("/DELETE:director_id Movies", () => {
+  describe("/DELETE:movie_id Movies", () => {
     it("it should DELETE a movie given by id", done => {
       chai
         .request(server)
