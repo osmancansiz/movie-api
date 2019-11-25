@@ -5,7 +5,7 @@ module.exports = () => {
   mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
   });
   mongoose.connection.on("open", () => {
     console.log("MongoDB Connected movie-api-db");
