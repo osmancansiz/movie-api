@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = "mongodb://127.0.0.1:27017/movie-api-db";
+const db = "mongodb+srv://ocansiz:BiqKfH0SsMKbYSdM@cluster0-tsiwk.mongodb.net/test?retryWrites=true&w=majority";
 
 module.exports = () => {
   mongoose.connect(db, {
