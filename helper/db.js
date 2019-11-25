@@ -13,6 +13,5 @@ module.exports = () => {
   mongoose.connection.on("error", err => {
     console.log("MongoDB Error movie-api-db", err);
   });
-
   mongoose.Promise = global.Promise;
 };
