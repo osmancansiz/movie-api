@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = "mongodb+srv://ocansiz:BiqKfH0SsMKbYSdM@cluster0-tsiwk.mongodb.net/test?retryWrites=true&w=majority";
+const db = "mongodb+srv://ocansiz:osman123@cluster0-tsiwk.mongodb.net/movie-api-db?retryWrites=true&w=majority";
 
 module.exports = () => {
   mongoose.connect(db, {
